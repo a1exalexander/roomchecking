@@ -1,0 +1,8 @@
+@import 'theme/style.scss';
+
+.App {
+  text-align: center;
+  &__header {
+    color: $B5;
+  }
+}

@@ -1,0 +1,51 @@
+@import 'theme/style.scss';
+
+$style: Subtle;
+
+.#{$style} {
+  cursor: pointer;
+  @include flex(center, center);
+  display: inline-flex;
+  @include transition(all);
+  &__text {
+    @include text($H12, 500, $B5);
+    margin-left: 6px;
+    line-height: 1;
+    @include transition(all);
+  }
+  &__icon {
+    @include text($H12, 500, $B5);
+    line-height: 1;
+    @include transition(all);
+  }
+  svg.#{$style}__icon {
+    @include svg(14px, $B5);
+  }
+  &._icon-right {
+    .#{$style}__text {
+      order: -1;
+      margin-left: 0;
+      margin-right: 6px;
+    }
+  }
+  @include media {
+    &:hover {
+      .#{$style}__text {
+        color: $B4;
+      }
+      .#{$style}__icon {
+        color: $B4;
+        fill: $B4;
+      }
+    }
+  }
+  &:active {
+    .#{$style}__text {
+      color: $B6;
+    }
+    .#{$style}__icon {
+      color: $B6;
+      fill: $B6;
+    }
+  }
+}
