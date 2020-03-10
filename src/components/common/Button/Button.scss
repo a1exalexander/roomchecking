@@ -84,8 +84,6 @@ $loading: (
   &__text {
     @include text($H12, 500, $N0);
     @include transition(all);
-    position: relative;
-    bottom: -1px;
   }
   &__icon {
     text-transform: none;
@@ -94,8 +92,6 @@ $loading: (
     @include transition(all);
     margin-right: 6px;
     line-height: 1;
-    position: relative;
-    bottom: -1px;
   }
   &__extra {
     @include text($H12, 400, $N0);
