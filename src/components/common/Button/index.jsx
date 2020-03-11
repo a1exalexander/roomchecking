@@ -10,11 +10,12 @@ export const Button = ({
   disabled,
   loading,
   extra,
-  Icon
+  Icon,
+  className
 }) => {
   return (
     <button
-      className={cx('Button', type, { _loading: loading, _extra: extra })}
+      className={cx('Button', type, { _loading: loading, _extra: extra }, className)}
       disabled={disabled}
       onClick={onClick}
     >
@@ -37,7 +38,8 @@ Button.defaultProps = {
   type: 'primary',
   loading: false,
   extra: false,
-  Icon: null
+  Icon: null,
+  className: null
 };
 
 Button.propTypes = {
@@ -47,7 +49,8 @@ Button.propTypes = {
   type: oneOf('primary, secondary'),
   loading: bool,
   extra: bool,
-  Icon: element
+  Icon: element,
+  className: string
 };
 
 export default Button;

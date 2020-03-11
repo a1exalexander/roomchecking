@@ -2,13 +2,15 @@ body {
   padding: 24px;
 }
 
-.container {
+.section {
   padding: 24px;
+  margin-bottom: 32px;
 }
 
 .row {
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
   > * {
     margin-right: 32px;
   }

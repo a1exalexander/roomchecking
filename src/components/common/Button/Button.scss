@@ -80,6 +80,7 @@ $loading: (
   position: relative;
   border: 0px solid transparent;
   @include flex(center, center);
+  box-shadow: $SH1;
   @include transition(all);
   &__text {
     @include text($H12, 500, $N0);
@@ -196,6 +197,7 @@ $loading: (
     &.#{$name}:active {
       background-color: map-get($bg-active, $name);
       border-color: map-get($border-active, $name);
+      box-shadow: none;
       .#{$style}__text {
         color: map-get($color-active, $name);
       }
@@ -216,6 +218,7 @@ $loading: (
     &.#{$name}:disabled {
       background-color: map-get($bg-disabled, $name);
       border-color: map-get($border-disabled, $name);
+      box-shadow: none;
       cursor: not-allowed;
       .#{$style}__text {
         color: map-get($color-disabled, $name);

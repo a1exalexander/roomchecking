@@ -1,0 +1,24 @@
+@import 'theme/style.scss';
+$style: Input;
+.#{$style} {
+  display: block;
+  &__input {
+    min-height: 32px;
+    @include flex(flex-start, center);
+    @include text($H14, 400, $N13);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 2px;
+    border: 1px solid $N4;
+    box-shadow: none;
+    outline: none;
+    &::placeholder {
+      @include text($H14, 400, $N10);
+    }
+  }
+  &__label {
+    display: inline-block;
+    margin-bottom: 8px;
+    @include text($H12, 500, $N13);
+  }
+}

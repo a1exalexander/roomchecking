@@ -1,11 +1,10 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { Button, Subtle } from 'components/common';
-import { title, container, row } from './style.module.scss';
+import './style.scss';
 
 export default {
-  title: 'Buttons',
-  component: Button
+  title: 'Buttons'
 };
 
 const Icon = ({ className }) => (
@@ -15,9 +14,9 @@ const Icon = ({ className }) => (
 );
 
 export const Primary = () => (
-  <div className={container}>
-    <h2 className={title}>Primary Button</h2>
-    <div className={row}>
+  <section className='section'>
+    <h2 className='title'>Primary Button</h2>
+    <article className='row'>
       <Button onClick={action('clicked')}>Primary</Button>
       <Button onClick={action('clicked')} disabled>
         Disabled
@@ -29,14 +28,14 @@ export const Primary = () => (
         Primary
       </Button>
       <Button onClick={action('clicked')} extra>Primary</Button>
-    </div>
-  </div>
+    </article>
+  </section>
 );
 
 export const Secondary = () => (
-  <div className={container}>
-    <h2 className={title}>Secondary Button</h2>
-    <div className={row}>
+  <section className='section'>
+    <h2 className='title'>Secondary Button</h2>
+    <article className='row'>
       <Button type='secondary' onClick={action('clicked')}>
         Secondary
       </Button>
@@ -52,14 +51,14 @@ export const Secondary = () => (
       <Button type='secondary' onClick={action('clicked')} extra>
         Secondary
       </Button>
-    </div>
-  </div>
+    </article>
+  </section>
 );
 
 export const SubtleButton = () => (
-  <div className={container}>
-    <h2 className={title}>Subtle </h2>
-    <div className={row}>
+  <section className='section'>
+    <h2 className='title'>Subtle </h2>
+    <article className='row'>
       <Subtle onClick={action('clicked')}>
         Subtle
       </Subtle>
@@ -69,6 +68,6 @@ export const SubtleButton = () => (
       <Subtle Icon={Icon} position='right' onClick={action('clicked')}>
         Subtle
       </Subtle>
-    </div>
-  </div>
+    </article>
+  </section>
 );

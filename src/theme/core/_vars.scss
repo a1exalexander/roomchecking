@@ -73,6 +73,10 @@ $R5: #FF5630;
 $R6: #DE350C;
 $R7: #BF2600;
 
+// Shadows
+
+$SH1: 0px 1px 4px -1px rgba(black, 0.11);
+
 /* ---FONT SIZE--- */
 @function calcRem($size) {
   $remSize: $size / 16px;

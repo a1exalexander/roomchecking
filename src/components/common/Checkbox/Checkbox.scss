@@ -1,0 +1,48 @@
+@import 'theme/style.scss';
+
+$style: Checkbox;
+
+.#{$style} {
+  position: relative;
+  display: block;
+  width: fit-content;
+  &__input {
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    &:checked + .#{$style}__cell {
+      background-color: $B5;
+      border-color: $B5;
+      .#{$style}__icon {
+        display: block;
+      }
+    }
+  }
+  &__cell {
+    position: relative;
+    z-index: 0;
+    @include flex(center, center);
+    @include size(16px);
+    border-radius: 2px;
+    background-color: $N0;
+    border: 1px solid $N4;
+    box-shadow: $SH1;
+    @include transition(all);
+    cursor: pointer;
+    @include media {
+      &:hover {
+        border-color: $N6;
+      }
+    }
+    &:active {
+      background-color: $B1;
+      border-color: $B3;
+      box-shadow: none;
+    }
+  }
+  &__icon {
+    @include svg(14px, $N0);
+    display: none;
+  }
+}
