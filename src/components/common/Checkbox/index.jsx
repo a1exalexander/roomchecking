@@ -4,7 +4,7 @@ import { ReactComponent as IconCheck } from 'assets/svg/Check.svg';
 import cx from 'classnames';
 import './Checkbox.scss';
 
-export const Checkbox = ({ value, checked, onChange, className }) => {
+export const Checkbox = ({ name, value, checked, onChange, className }) => {
 
   const handleChange = e => {
     const { checked } = e.target;
@@ -13,7 +13,7 @@ export const Checkbox = ({ value, checked, onChange, className }) => {
 
   return (
     <label className={cx('Checkbox', className)}>
-      <input className='Checkbox__input' value={value} checked={checked} onChange={handleChange} type='checkbox' />
+      <input name={name} className='Checkbox__input' value={value} checked={checked} onChange={handleChange} type='checkbox' />
       <span className='Checkbox__cell'>
         <IconCheck className='Checkbox__icon animated faster bounceIn' />
       </span>
@@ -23,14 +23,16 @@ export const Checkbox = ({ value, checked, onChange, className }) => {
 
 Checkbox.defaultProps = {
   value: true,
-  className: null
+  className: null,
+  name: 'checkboxes'
 }
 
 Checkbox.propTypes = {
   checked: bool.isRequired,
   value: oneOfType([string, bool, number]),
   onChange: func.isRequired,
-  className: string
+  className: string,
+  name: string
 }
 
 export default Checkbox;

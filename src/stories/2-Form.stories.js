@@ -34,7 +34,10 @@ export const Input = () => {
     <section className='section'>
       <h2 className='title'>Input</h2>
       <article className='row'>
-        <InputElement label='Label' />
+        <InputElement label='Default' />
+        <InputElement disabled label='Disabled' />
+        <InputElement label='Error' status={'error'} />
+        <InputElement label='Success' status={'success'} />
       </article>
     </section>
   );
