@@ -1,0 +1,13 @@
+@import 'theme/style.scss';
+$style: Stat;
+
+.#{$style} {
+  @include flex(flex-start, center, column);
+  &__value {
+    @include text($H16, 500, $N10);
+    margin-bottom: 6px;
+  }
+  &__label {
+    @include text($H11, 400, $N7);
+  }
+}

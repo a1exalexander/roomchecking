@@ -1,82 +1,83 @@
 /* ---COLORS--- */
 
-$BG: #F5F7FB;
+$BG: #f5f7fb;
 
 // Naturel
 $N0: #ffffff;
-$N1: #FAFBFC;
-$N2: #F4F5F7;
-$N3: #EBECF0;
-$N4: #DFE1E7;
-$N5: #C1C7D0;
-$N6: #B3BAC5;
-$N7: #97A0AF;
-$N8: #7A869A;
-$N9: #5E6C84;
-$N10: #42526E;
+$N1: #fafbfc;
+$N2: #f4f5f7;
+$N3: #ebecf0;
+$N4: #dfe1e7;
+$N5: #c1c7d0;
+$N6: #b3bac5;
+$N7: #97a0af;
+$N8: #7a869a;
+$N9: #5e6c84;
+$N10: #42526e;
 $N11: #253858;
-$N12: #172B4E;
-$N13: #091E42;
+$N12: #172b4e;
+$N13: #091e42;
 $N00: #000000;
 
 // Primary
-$P1: #E6E9FF;
-$P2: #B6BDF2;
-$P3: #8D96D9;
-$P4: #7782D9;
-$P5: #5464C0;
-$P6: #4356AA;
-$P7: #324B94;
+$P1: #e6e9ff;
+$P2: #b6bdf2;
+$P3: #8d96d9;
+$P4: #7782d9;
+$P5: #5464c0;
+$P6: #4356aa;
+$P7: #324b94;
 
 // Aqua
-$A1: #E6FCFF;
-$A2: #B3F5FF;
-$A3: #79E2F2;
-$A4: #00C7E5;
-$A5: #00B8D9;
-$A6: #00A3BF;
-$A7: #008DA6;
+$A1: #e6fcff;
+$A2: #b3f5ff;
+$A3: #79e2f2;
+$A4: #00c7e5;
+$A5: #00b8d9;
+$A6: #00a3bf;
+$A7: #008da6;
 
 // Blue
-$B1: #DEEBFF;
-$B2: #B3D4FF;
-$B3: #4C9AFF;
-$B4: #2784FF;
-$B5: #0065FF;
-$B6: #0152CC;
-$B7: #0647A6;
+$B1: #deebff;
+$B2: #b3d4ff;
+$B3: #4c9aff;
+$B4: #2784ff;
+$B5: #0065ff;
+$B6: #0152cc;
+$B7: #0647a6;
 
 // Green
-$G1: #E3FCEF;
-$G2: #ACF4D1;
-$G3: #79F1C0;
-$G4: #57D8A3;
-$G5: #36B37E;
+$G1: #e3fcef;
+$G2: #acf4d1;
+$G3: #79f1c0;
+$G4: #57d8a3;
+$G5: #36b37e;
 $G6: #028759;
 $G7: #016644;
 
 // Yellow
-$Y1: #FEFAE6;
-$Y2: #FFF0B3;
-$Y3: #FEE380;
-$Y4: #FFC402;
-$Y5: #FFAB01;
-$Y6: #FF991F;
-$Y7: #FF8B00;
+$Y1: #fefae6;
+$Y2: #fff0b3;
+$Y3: #fee380;
+$Y4: #ffc402;
+$Y5: #ffab01;
+$Y6: #ff991f;
+$Y7: #ff8b00;
 
 // Red
-$R1: #FFEBE6;
-$R2: #FFBDAD;
-$R3: #FF8F74;
-$R4: #FF7552;
-$R5: #FF5630;
-$R6: #DE350C;
-$R7: #BF2600;
+$R1: #ffebe6;
+$R2: #ffbdad;
+$R3: #ff8f74;
+$R4: #ff7552;
+$R5: #ff5630;
+$R6: #de350c;
+$R7: #bf2600;
 
 // Shadows
 
 $SH1: 0px 1px 4px -1px rgba(black, 0.11);
-$SH2: 0 1px 1px 0 rgba(0,0,0,0.05);
+$SH2: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+$SH3: 0 1px 5px -1px rgba(0, 0, 0, 0.15);
 
 /* ---FONT SIZE--- */
 @function calcRem($size) {
@@ -109,5 +110,6 @@ $screen-fullhd: 1440px;
 $screen-retina: 1660px;
 
 // FONTS
-$base-font: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-  'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$base-font: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;

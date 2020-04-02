@@ -1,0 +1,31 @@
+@import 'theme/style.scss';
+$style: Table;
+
+.#{$style} {
+  border-collapse: collapse;
+  &._fluid {
+    width: 100%;
+  }
+  thead {
+    box-shadow: $SH3; 
+  }
+  th, td {
+    text-align: left;
+    &._left {
+      text-align: left;
+    }
+    &._right {
+      text-align: right;
+    }
+  }
+  th {
+    border: 1px solid $N4;
+    padding: 9px 16px 7px;
+    @include text($H10, 500, $N7);
+  }
+  td {
+    @include text($H12, 500, $N13);
+    padding: 11px 16px 10px;
+    border: 1px solid $N4;
+  }
+}

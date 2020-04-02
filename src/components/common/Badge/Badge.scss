@@ -1,0 +1,109 @@
+@import 'theme/style.scss';
+$style: Badge;
+
+@function shadow($color) {
+  $rgba: rgba($color, 0.1);
+  @return 0px 0px 4px 1px $rgba;
+}
+
+.#{$style} {
+  @include flex(center, center);
+  display: inline-flex;
+  padding: 6px 10px;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: 2px;
+  background-color: $N4;
+  @include text($H12, 500, $N10);
+  @include transition(all);
+  cursor: pointer;
+  @include media {
+    &:hover {
+      filter: brightness(1.01);
+      box-shadow: shadow($N10);
+    }
+  }
+  &:active {
+    box-shadow: none;
+    filter: brightness(0.99);
+  }
+  &._fluid {
+    justify-self: flex-start;
+    width: 100%;
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._dark {
+    background-color: $N7;
+    color: $N13;
+    @include media {
+      &:hover {
+        box-shadow: shadow($N11);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._green {
+    background-color: $G1;
+    color: $G7;
+    @include media {
+      &:hover {
+        box-shadow: shadow($G4);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._blue {
+    background-color: $A1;
+    color: $A7;
+    @include media {
+      &:hover {
+        box-shadow: shadow($A4);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._red {
+    background-color: $R1;
+    color: $R7;
+    @include media {
+      &:hover {
+        box-shadow: shadow($R4);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._yellow {
+    background-color: $Y1;
+    color: $Y7;
+    @include media {
+      &:hover {
+        box-shadow: shadow($Y4);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+  &._purple {
+    background-color: $P1;
+    color: $P7;
+    @include media {
+      &:hover {
+        box-shadow: shadow($P4);
+      }
+    }
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
