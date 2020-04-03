@@ -5,3 +5,6 @@ export * from './Input';
 export * from './Stat';
 export * from './Badge';
 export * from './Table';
+export * from './Popup';
+export * from './Popover';
+export * from './Grid';

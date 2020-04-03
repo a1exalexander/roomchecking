@@ -25,7 +25,7 @@
   flex-wrap: $wrap;
 }
 
-@mixin text($size, $weight: 400, $color: black) {
+@mixin text($size, $weight: 400, $color: $N13) {
   font: {
     size: $size;
     weight: $weight;

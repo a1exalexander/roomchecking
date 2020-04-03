@@ -1,0 +1,5 @@
+@import 'theme/style.scss';
+$style: Row;
+.#{$style} {
+  display: flex;
+}

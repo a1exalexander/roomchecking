@@ -46,7 +46,7 @@ Button.propTypes = {
   onClick: func.isRequired,
   children: string.isRequired,
   disabled: bool,
-  type: oneOf('primary, secondary'),
+  type: oneOf('primary, secondary, danger'),
   loading: bool,
   extra: bool,
   Icon: element,

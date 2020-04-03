@@ -13,63 +13,77 @@
 
 $style: Button;
 
-$names: 'primary', 'secondary';
+$names: 'primary', 'secondary', 'danger';
 
 $bg: (
   'primary': $B5,
-  'secondary': $N0
+  'secondary': $N0,
+  'danger': $R6,
 );
 $bg-hover: (
   'primary': $B4,
-  'secondary': $N0
+  'secondary': $N0,
+  'danger': $R5,
 );
 $bg-active: (
   'primary': $B6,
-  'secondary': $N0
+  'secondary': $N0,
+  'danger': $R7,
 );
 $bg-disabled: (
   'primary': $N3,
-  'secondary': $N2
+  'secondary': $N2,
+  'danger': $N3,
 );
 $color: (
   'primary': $N0,
-  'secondary': $N10
+  'secondary': $N10,
+  'danger': $N0,
 );
 $color-hover: (
   'primary': $N0,
-  'secondary': $N9
+  'secondary': $N9,
+  'danger': $N0,
 );
 $color-active: (
   'primary': $N0,
-  'secondary': $N11
+  'secondary': $N11,
+  'danger': $N0,
 );
 $color-disabled: (
   'primary': $N6,
-  'secondary': $N6
+  'secondary': $N6,
+  'danger': $N6,
 );
 $border: (
   'primary': $B5,
-  'secondary': $N4
+  'secondary': $N4,
+  'danger': $R6,
 );
 $border-hover: (
   'primary': $B4,
-  'secondary': $N3
+  'secondary': $N3,
+  'danger': $R5,
 );
 $border-active: (
   'primary': $B6,
-  'secondary': $N5
+  'secondary': $N5,
+  'danger': $R7,
 );
 $border-disabled: (
   'primary': $N3,
-  'secondary': $N4
+  'secondary': $N4,
+  'danger': $N3,
 );
 $devider: (
   'primary': $N0,
-  'secondary': $N4
+  'secondary': $N4,
+  'danger': $N0,
 );
 $loading: (
   'primary': $N0,
-  'secondary': $N10
+  'secondary': $N10,
+  'danger': $N0,
 );
 
 .#{$style} {
@@ -78,7 +92,7 @@ $loading: (
   padding: 0px 16px;
   min-height: 32px;
   position: relative;
-  border: 0px solid transparent;
+  border: 1px solid transparent;
   @include flex(center, center);
   box-shadow: $SH1;
   @include transition(all);
@@ -146,9 +160,6 @@ $loading: (
     width: 100%;
   }
   @each $name in $names {
-    &.secondary {
-      border-width: 1px;
-    }
     &.#{$name} {
       background-color: map-get($bg, $name);
       border-color: map-get($border, $name);

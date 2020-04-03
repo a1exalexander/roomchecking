@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / Interface / Menu</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M17.9931545,15 C18.509501,15 18.9350657,15.3827202 18.9932262,15.8826674 L19,16 C19,16.5522847 18.5500512,17 17.9931545,17 L6.00684547,17 C5.45078007,17 5,16.5561352 5,16 C5,15.4477153 5.44994876,15 6.00684547,15 L17.9931545,15 Z M17.9931545,11 C18.509501,11 18.9350657,11.3827202 18.9932262,11.8826674 L19,12 C19,12.5522847 18.5500512,13 17.9931545,13 L6.00684547,13 C5.45078007,13 5,12.5561352 5,12 C5,11.4477153 5.44994876,11 6.00684547,11 L17.9931545,11 Z M17.9931545,7 C18.509501,7 18.9350657,7.38272018 18.9932262,7.88266744 L19,8 C19,8.55228475 18.5500512,9 17.9931545,9 L6.00684547,9 C5.45078007,9 5,8.55613518 5,8 C5,7.44771525 5.44994876,7 6.00684547,7 L17.9931545,7 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons-/-Interface-/-Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="icon" fill="#091E42" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Icons / Interface / Calendar</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M16,4 C16,3.448 16.448,3 17,3 C17.552,3 18,3.448 18,4 L18,4 L18,5 L19.005,5 C20.107,5 21,5.895 21,6.994 L21,6.994 L21,19.006 C21,20.107 20.108,21 19.005,21 L19.005,21 L4.995,21 C3.893,21 3,20.106 3,19.006 L3,19.006 L3,6.994 C3,5.893 3.892,5 4.995,5 L4.995,5 L6,5 L6,4 C6,3.448 6.448,3 7,3 C7.552,3 8,3.448 8,4 L8,4 L8,5 L16,5 Z M18.75,9.571 L5.25,9.571 L5.25,17.718 C5.25,18.273 5.694,18.714 6.243,18.714 L6.243,18.714 L17.758,18.714 C18.3,18.714 18.75,18.268 18.75,17.718 L18.75,17.718 L18.75,9.571 Z M9,15 L9,17 L7,17 L7,15 L9,15 Z M13.001,15 L13.001,17 L11,17 L11,15 L13.001,15 Z M17,15 L17,17 L15,17 L15,15 L17,15 Z M9,10.999 L9,13 L7,13 L7,10.999 L9,10.999 Z M17,10.999 L17,13 L15,13 L15,10.999 L17,10.999 Z M13.001,10.999 L13.001,13 L11,13 L11,10.999 L13.001,10.999 Z" id="path-1"></path>
+    </defs>
+    <g id="Icons-/-Interface-/-Calendar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Combined-Shape" fill="#091E42" xlink:href="#path-1"></use>
+    </g>
+</svg>
