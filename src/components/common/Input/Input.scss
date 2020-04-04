@@ -3,6 +3,7 @@ $style: Input;
 .#{$style} {
   display: block;
   &__input {
+    width: 100%;
     min-height: 32px;
     @include flex(flex-start, center);
     @include text($H12, 400, $N13);

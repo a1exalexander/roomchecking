@@ -25,7 +25,7 @@
   flex-wrap: $wrap;
 }
 
-@mixin text($size, $weight: 400, $color: $N13) {
+@mixin text($size: 1rem, $weight: 400, $color: $N13) {
   font: {
     size: $size;
     weight: $weight;
@@ -79,7 +79,7 @@ $z-index: (
   dropdown: 2,
   wrapper: 1,
   default: 0,
-  under: -1
+  under: -1,
 );
 
 @mixin padding-hack($padding: 50%, $size: contain) {

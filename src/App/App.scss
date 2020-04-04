@@ -1,8 +1,6 @@
 @import 'theme/style.scss';
 
 .App {
-  text-align: center;
-  &__header {
-    color: $B5;
-  }
+  min-height: 100vh;
+  background-color: $BG-COLOR;
 }

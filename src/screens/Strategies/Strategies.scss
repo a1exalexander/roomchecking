@@ -1,0 +1,41 @@
+@import 'theme/style.scss';
+
+$style: Strategies;
+.#{$style} {
+  padding: 12px 40px;
+  &__head {
+    margin-bottom: 50px;
+  }
+  &__hotel-info {
+    margin-bottom: 17px;
+  }
+  &__inputs {
+    margin-right: 36px;
+  }
+  &__input {
+    flex-grow: 1;
+    &:not(:last-of-type) {
+      margin-right: 20px;
+    }
+  }
+  &__cancel-btn {
+    margin-right: 20px;
+  }
+  &__badge {
+    &:not(:last-of-type) {
+      margin-right: 8px;
+    }
+  }
+  &__table {
+    
+  }
+  &__name-cell {
+    width: 25%;
+  }
+  &__date-cell {
+    width: 150px;
+  }
+  &__date {
+    @include text($H12, 600, $N10);
+  }
+}

@@ -8,3 +8,4 @@ export * from './Table';
 export * from './Popup';
 export * from './Popover';
 export * from './Grid';
+export * from './LogoutBtn';

@@ -1,0 +1,34 @@
+@import 'theme/style.scss';
+
+$style: LogoutBtn;
+.#{$style} {
+  @include flex(flex-start, center);
+  @include media {
+    &:hover {
+      .#{$style}__text {
+        color: $N8;
+      }
+      .#{$style}__icon {
+        fill: $N8;
+      }
+    }
+  }
+  &:active {
+    .#{$style}__text {
+      color: $N12;
+    }
+    .#{$style}__icon {
+      fill: $N12;
+    }
+  }
+  &__text {
+    padding-top: 1px;
+    @include text($H14, 600, $N10);
+    margin-right: 8px;
+    @include transition(all);
+  }
+  &__icon {
+    @include svg(16px, $N10);
+    @include transition(all);
+  }
+}

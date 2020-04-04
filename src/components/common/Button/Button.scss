@@ -95,6 +95,7 @@ $loading: (
   border: 1px solid transparent;
   @include flex(center, center);
   box-shadow: $SH1;
+  height: fit-content;
   @include transition(all);
   &__text {
     @include text($H12, 500, $N0);

@@ -14,13 +14,14 @@ export const Input = ({
   status,
   value,
   style,
-  onChange
+  onChange,
+  placeholder,
 }) => {
   const id = useMemo(uuidv4);
   const handleChange = (e) => {
     const { value } = e.target;
     onChange(value);
-  }
+  };
 
   return (
     <div className={cx('Input', className)} style={style}>
@@ -35,9 +36,10 @@ export const Input = ({
         value={value}
         onChange={handleChange}
         disabled={disabled}
+        placeholder={placeholder}
         className={cx('Input__input', inputClassName, {
           _error: status === 'error',
-          _success: status === 'success'
+          _success: status === 'success',
         })}
       />
     </div>
@@ -52,7 +54,8 @@ Input.defaultProps = {
   disabled: false,
   status: 'default',
   onChange: () => null,
-  style: null
+  style: null,
+  placeholder: '',
 };
 
 Input.propTypes = {
@@ -64,7 +67,8 @@ Input.propTypes = {
   status: oneOf('default', 'error', 'success'),
   value: string.isRequired,
   onChange: func,
-  style: objectOf(any)
+  style: objectOf(any),
+  placeholder: string,
 };
 
 export default Input;

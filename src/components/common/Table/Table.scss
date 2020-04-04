@@ -2,6 +2,7 @@
 $style: Table;
 
 .#{$style} {
+  background-color: $N0;
   border-collapse: collapse;
   &._fluid {
     width: 100%;
@@ -21,6 +22,7 @@ $style: Table;
   th {
     border: 1px solid $N4;
     padding: 9px 16px 7px;
+    text-transform: uppercase;
     @include text($H10, 500, $N7);
   }
   td {
