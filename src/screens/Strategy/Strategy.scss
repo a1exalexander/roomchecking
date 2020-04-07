@@ -1,21 +1,32 @@
 @import 'theme/style.scss';
 
-$style: Strategies;
+$style: Strategy;
 .#{$style} {
-  padding: 12px 40px;
+  padding: 40px;
   &__head {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
   &__hotel-info {
     margin-bottom: 17px;
   }
   &__inputs {
     margin-right: 36px;
+    flex-grow: 1;
+    @include media {
+      flex-grow: 0;
+      flex-basis: 50%;
+    }
   }
   &__input {
     flex-grow: 1;
     &:not(:last-of-type) {
       margin-right: 20px;
+    }
+    &--small {
+      flex-grow: 1.1;
+    }
+    &--large {
+      flex-grow: 2;
     }
   }
   &__cancel-btn {

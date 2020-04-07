@@ -3,12 +3,13 @@ import { string, number, oneOfType, oneOf } from 'prop-types';
 import cx from 'classnames';
 import './Popover.scss';
 
+const offset = '-6px';
 const positions = {
-  'top-left': { top: 'auto', right: 'auto', bottom: '100%', left: 0 },
-  'top-right': { top: 'auto', right: 0, bottom: '100%', left: 'auto' },
+  'top-left': { top: 'auto', right: 'auto', bottom: '100%', left: offset },
+  'top-right': { top: 'auto', right: offset, bottom: '100%', left: 'auto' },
   right: { top: 0, right: 'auto', bottom: 'auto', left: '100%' },
-  'bottom-left': { top: '100%', right: 'auto', bottom: '100%', left: 0 },
-  'bottom-right': { top: '100%', right: 'auto', bottom: '100%', left: 0 },
+  'bottom-left': { top: '100%', right: 'auto', bottom: 'auto', left: offset },
+  'bottom-right': { top: '100%', right: offset, bottom: 'auto', left: 'auto' },
   left: { top: 'auto', right: '100%', bottom: 'auto', left: 0 },
 };
 
@@ -24,10 +25,10 @@ export const Popover = ({
   position,
 }) => {
   return (
-    <div className='Popover__wrapper'>
+    <div className={cx('Popover__wrapper', className)}>
       <Target className='Popover__target' />
       <div
-        className={cx('Popover', className)}
+        className={cx('Popover')}
         style={{
           ...positions[position],
           paddingTop: top,
@@ -46,8 +47,8 @@ export const Popover = ({
 
 Popover.defaultProps = {
   className: null,
-  width: '200px',
-  top: '8px',
+  width: 'auto',
+  top: '4px',
   right: 0,
   left: 0,
   bottom: 0,
@@ -65,11 +66,9 @@ Popover.propTypes = {
   position: oneOf([
     'top-left',
     'top-right',
-    'top-right',
     'right',
     'right-center',
     'bottom-left',
-    'bottom-right',
     'bottom-right',
     'left',
   ]),

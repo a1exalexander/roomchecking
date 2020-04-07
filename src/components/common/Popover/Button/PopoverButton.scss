@@ -1,6 +1,6 @@
 @import 'theme/style.scss';
 
-$style: Subtle;
+$style: PopoverButton;
 
 .#{$style} {
   cursor: pointer;
@@ -8,46 +8,39 @@ $style: Subtle;
   display: inline-flex;
   @include transition(all);
   &__text {
-    @include text($H12, 600, $B5);
+    @include text($H12, 600, $N13);
     margin-left: 6px;
     line-height: 1;
     @include transition(all);
   }
   &__icon {
-    @include text($H12, 600, $B5);
+    @include text($H11, 600, $B5);
     line-height: 1;
     @include transition(all);
   }
   svg.#{$style}__icon {
-    @include svg(16px, $B5);
+    @include svg(14px, $N5);
     position: relative;
     bottom: 1px;
-  }
-  &._icon-right {
-    .#{$style}__text {
-      order: -1;
-      margin-left: 0;
-      margin-right: 6px;
-    }
   }
   @include media {
     &:hover {
       .#{$style}__text {
-        color: $B4;
+        color: $N10;
       }
       .#{$style}__icon {
-        color: $B4;
-        fill: $B4;
+        color: $N10;
+        fill: $N10;
       }
     }
   }
   &:active {
     .#{$style}__text {
-      color: $B6;
+      color: $N13;
     }
     .#{$style}__icon {
-      color: $B6;
-      fill: $B6;
+      color: $N13;
+      fill: $N13;
     }
   }
 }

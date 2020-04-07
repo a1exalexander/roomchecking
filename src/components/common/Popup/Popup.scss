@@ -6,7 +6,7 @@ $style: Popup;
   min-height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   overflow: auto;
-  @include transition(all);
+  @include z-index(popup);
   &__inner {
     padding: 32px;
     height: 100%;
@@ -24,6 +24,7 @@ $style: Popup;
   }
   &__title {
     @include text($H16, 600);
+    margin: 0;
   }
   &__close-btn {
     @include size(20px);
@@ -46,6 +47,7 @@ $style: Popup;
   }
   &__content {
     margin-bottom: 30px;
+    @include text($H14, 400);
   }
   &__button {
     &:not(:last-child) {

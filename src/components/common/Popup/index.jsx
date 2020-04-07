@@ -1,4 +1,5 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { string, element, bool, oneOfType, func } from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as IconClose } from 'assets/svg/Close.svg';
@@ -25,15 +26,21 @@ export const Popup = ({
     e.stopPropagation();
   };
   return (
-    visible && (
-      <div className={cx('Popup animated faster fadeIn', className)}>
+    <CSSTransition in={visible} unmountOnExit classNames='fade' timeout={200}>
+      <div className={cx('Popup', className)}>
         <div className='Popup__inner' onClick={onClose}>
           <article
             onClick={onClickStop}
-            className='Popup__card animated fast fadeIn'
-            style={{ width, visibility: visible ? 'visible' : 'hidden' }}
+            className={cx('Popup__card', 'animated faster', {
+              zoomIn: visible,
+            })}
+            style={{ width }}
           >
-            <Row justifyContent='space-between' className='Popup__header'>
+            <Row
+              justifyContent='space-between'
+              align-items='center'
+              className='Popup__header'
+            >
               <h3 className='Popup__title'>{title}</h3>
               <button onClick={onClose} className='Popup__close-btn'>
                 <IconClose className='Popup__close-icon' />
@@ -72,7 +79,7 @@ export const Popup = ({
           </article>
         </div>
       </div>
-    )
+    </CSSTransition>
   );
 };
 

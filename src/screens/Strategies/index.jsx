@@ -2,6 +2,15 @@ import React, { useState } from 'react';
 import Row from 'components/common/Grid/Row';
 import { LogoutBtn, Input, Button, Table, Badge } from 'components/common';
 import './Strategies.scss';
+import Subtle from 'components/common/Subtle';
+import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
+import { ReactComponent as IconActions } from 'assets/svg/Actions.svg';
+import { ReactComponent as IconTrash } from 'assets/svg/Trash.svg';
+import { ReactComponent as IconCopy } from 'assets/svg/Copy.svg';
+import Popover from 'components/common/Popover';
+import PopoverButton from 'components/common/Popover/Button';
+import Popup from 'components/common/Popup';
+import { routePath } from 'router/const';
 
 export const StrategiesScreen = () => {
   const [hotelInfo, setHotelInfo] = useState({
@@ -10,6 +19,7 @@ export const StrategiesScreen = () => {
     name: '',
     phone: '',
   });
+  const [visiblePopup, setVisiblePopup] = useState(false);
 
   const onHotelInfoChange = (type) => (value) => {
     setHotelInfo((prevState) => ({ ...prevState, [type]: value }));
@@ -17,6 +27,15 @@ export const StrategiesScreen = () => {
 
   return (
     <main className='Strategies'>
+      <Popup
+        visible={visiblePopup}
+        onClose={() => setVisiblePopup(false)}
+        title='Remove Rule'
+        dangerButton='Remove'
+        primaryButton={false}
+      >
+        Are you sure you want to remove this rule?
+      </Popup>
       <Row justifyContent='flex-end' className='Strategies__head'>
         <LogoutBtn className='Strategies__logout-btn' />
       </Row>
@@ -56,7 +75,7 @@ export const StrategiesScreen = () => {
           <Button>Save</Button>
         </Row>
       </Row>
-      <Table>
+      <Table className='Strategies__table'>
         <thead>
           <tr>
             <th className='Strategies__name-cell'>rule name</th>
@@ -65,16 +84,50 @@ export const StrategiesScreen = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className='Strategies__name-cell'>Rule 1</td>
-            <td className='Strategies__date-cell'><span className='Strategies__date'>10/12/2019 18:00</span></td>
-            <td>
-              <Badge className='Strategies__badge'>REC</Badge>
-              <Badge className='Strategies__badge'>Hebdo</Badge>
-            </td>
-          </tr>
+          {[1, 2].map((i) => (
+            <tr key={i}>
+              <td className='Strategies__name-cell'>
+                <Subtle>Rule {i}</Subtle>
+              </td>
+              <td className='Strategies__date-cell'>
+                <span className='Strategies__date'>10/12/2019 18:00</span>
+              </td>
+              <td>
+                <Row justifyContent='space-between'>
+                  <Row>
+                    <Badge className='Strategies__badge'>REC</Badge>
+                    <Badge className='Strategies__badge'>Hebdo</Badge>
+                  </Row>
+                  <Popover
+                    className='Strategies__popover'
+                    position='bottom-right'
+                    Target={() => (
+                      <IconActions className='Strategies__actions-icon' />
+                    )}
+                  >
+                    <div>
+                      <PopoverButton
+                        className='Strategies__popover-link'
+                        Icon={IconCopy}
+                      >
+                        Dublicate
+                      </PopoverButton>
+                      <PopoverButton
+                        className='Strategies__popover-link'
+                        Icon={IconTrash}
+                        onClick={() => setVisiblePopup(true)}
+                      >
+                        Remove
+                      </PopoverButton>
+                    </div>
+                  </Popover>
+                </Row>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
+      <Subtle Icon={IconPlus} link to={`${routePath.STRATEGY}/new`}>Add New Rule</Subtle>
     </main>
   );
 };

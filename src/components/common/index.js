@@ -7,5 +7,6 @@ export * from './Badge';
 export * from './Table';
 export * from './Popup';
 export * from './Popover';
+export * from './Popover/Button';
 export * from './Grid';
 export * from './LogoutBtn';

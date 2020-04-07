@@ -11,9 +11,6 @@ export const Row = ({
   direction,
   wrap,
   alignContent,
-  grow,
-  shrink,
-  width,
 }) => {
   return (
     <div
@@ -24,9 +21,6 @@ export const Row = ({
         alignContent,
         flexDirection: direction,
         flexWrap: wrap ? 'wrap' : 'no-wrap',
-        flexGrow: grow,
-        width,
-        flexShrink: shrink,
       }}
     >
       {children}
@@ -41,8 +35,6 @@ Row.defaultProps = {
   alignContent: 'stretch ',
   direction: 'row',
   wrap: false,
-  grow: 0,
-  shrink: 1,
 };
 
 Row.propTypes = {
@@ -53,8 +45,6 @@ Row.propTypes = {
   direction: string,
   alignContent: string,
   wrap: bool,
-  grow: number,
-  shrink: number,
 };
 
 export default Row;
