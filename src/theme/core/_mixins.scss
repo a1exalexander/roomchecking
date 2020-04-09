@@ -49,7 +49,7 @@
   height: $size;
   fill: $color;
   flex-shrink: 0;
-  transition-property: fill, opacity, stroke, filter;
+  transition-property: fill, opacity, stroke, filter, transform;
   transition-duration: 0.2s;
   transition-timing-function: ease;
   @content;

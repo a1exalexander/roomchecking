@@ -1,0 +1,23 @@
+@import 'theme/style.scss';
+
+$style: NewStrategy;
+.#{$style} {
+  padding: 15px 16px;
+  background-color: $N0;
+  border: 1px solid $N4;
+  border-top: none;
+  &__head {
+    margin-bottom: 14px;
+  }
+  &__heading {
+    text-transform: uppercase;
+    @include text($H10, 500, $N7);
+  }
+  &__input {
+    flex-grow: 1;
+    margin-right: 20px;
+    &--large {
+      flex-grow: 1.8;
+    }
+  }
+}

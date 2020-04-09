@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, string, element } from 'prop-types';
+import { func, string, node, object } from 'prop-types';
 import cx from 'classnames';
 import './PopoverButton.scss';
 
@@ -15,12 +15,13 @@ export const PopoverButton = ({ onClick, children, Icon, className }) => {
 PopoverButton.defaultProps = {
   Icon: null,
   className: null,
+  onClick: undefined,
 };
 
 PopoverButton.propTypes = {
-  onClick: func.isRequired,
-  children: string.isRequired,
-  Icon: element,
+  onClick: func,
+  children: node.isRequired,
+  Icon: object,
   className: string,
 };
 

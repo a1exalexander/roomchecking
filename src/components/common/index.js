@@ -10,3 +10,5 @@ export * from './Popover';
 export * from './Popover/Button';
 export * from './Grid';
 export * from './LogoutBtn';
+export * from './BackButton';
+export * from './IconButton';

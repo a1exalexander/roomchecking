@@ -1,5 +1,5 @@
 import React from 'react';
-import { func, bool, string, oneOf, element } from 'prop-types';
+import { func, bool, string, oneOf, node, object } from 'prop-types';
 import cx from 'classnames';
 import './Button.scss';
 
@@ -11,11 +11,16 @@ export const Button = ({
   loading,
   extra,
   Icon,
-  className
+  className,
 }) => {
   return (
     <button
-      className={cx('Button', type, { _loading: loading, _extra: extra }, className)}
+      className={cx(
+        'Button',
+        type,
+        { _loading: loading, _extra: extra },
+        className
+      )}
       disabled={disabled}
       onClick={onClick}
     >
@@ -39,18 +44,19 @@ Button.defaultProps = {
   loading: false,
   extra: false,
   Icon: null,
-  className: null
+  className: null,
+  onClick: undefined,
 };
 
 Button.propTypes = {
-  onClick: func.isRequired,
-  children: string.isRequired,
+  onClick: func,
+  children: node.isRequired,
   disabled: bool,
-  type: oneOf('primary, secondary, danger'),
+  type: oneOf(['primary', 'secondary', 'danger']),
   loading: bool,
   extra: bool,
-  Icon: element,
-  className: string
+  Icon: object,
+  className: string,
 };
 
 export default Button;

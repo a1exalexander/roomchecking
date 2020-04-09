@@ -11,6 +11,7 @@ $style: Strategies;
   }
   &__inputs {
     margin-right: 36px;
+    flex-grow: 1;
   }
   &__input {
     flex-grow: 1;
@@ -30,10 +31,11 @@ $style: Strategies;
     margin-bottom: 20px;
   }
   &__name-cell {
-    width: 25%;
+    width: 21%;
   }
   &__date-cell {
-    width: 150px;
+    width: 1%;
+    white-space: nowrap;
   }
   &__date {
     @include text($H12, 600, $N10);

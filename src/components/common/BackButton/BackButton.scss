@@ -1,6 +1,7 @@
 @import 'theme/style.scss';
 
-$style: Subtle;
+$style: BackButton;
+$bg-color: #ddf3fd;
 
 .#{$style} {
   cursor: pointer;
@@ -13,13 +14,24 @@ $style: Subtle;
     line-height: 1;
     @include transition(all);
   }
-  &__icon {
-    @include text($H12, 600, $B5);
-    line-height: 1;
+  &__icon-wrapper {
+    border-radius: 50%;
+    padding: 2px;
+    background-color: $bg-color;
+    flex-shrink: 0;
+    $size: 16px;
+    width: $size;
+    height: $size;
+    @include flex(center, center);
     @include transition(all);
   }
   svg.#{$style}__icon {
-    @include svg(16px, $B5);
+    @include svg(16px, #ddf3fd);
+    margin-right: 6px;
+  }
+  svg.#{$style}__icon-back {
+    @include svg(14px, $B5);
+    margin-right: 1px;
   }
   &._icon-right {
     .#{$style}__text {
@@ -33,9 +45,13 @@ $style: Subtle;
       .#{$style}__text {
         color: $B4;
       }
-      .#{$style}__icon {
+      .#{$style}__icon,
+      .#{$style}__icon-back {
         color: $B4;
         fill: $B4;
+      }
+      .#{$style}__icon-wrapper {
+        transform: translateX(-2px);
       }
     }
   }
@@ -43,9 +59,13 @@ $style: Subtle;
     .#{$style}__text {
       color: $B6;
     }
-    .#{$style}__icon {
+    .#{$style}__icon,
+    .#{$style}__icon-back {
       color: $B6;
       fill: $B6;
+    }
+    .#{$style}__icon-wrapper {
+      transform: translateX(-4px);
     }
   }
 }

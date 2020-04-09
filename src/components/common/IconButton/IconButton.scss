@@ -1,0 +1,27 @@
+@import 'theme/style.scss';
+
+$style: IconButton;
+
+.#{$style} {
+  flex-shrink: 0;
+  cursor: pointer;
+  @include flex(center, center);
+  display: inline-flex;
+  @include transition(all);
+  svg {
+    @include svg(18px, $N7);
+    margin-right: 6px;
+  }
+  @include media {
+    &:hover {
+      svg {
+        fill: $N6;
+      }
+    }
+  }
+  &:active {
+    svg {
+      fill: $N9;
+    }
+  }
+}

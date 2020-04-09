@@ -2,7 +2,10 @@
 
 $style: Strategy;
 .#{$style} {
-  padding: 40px;
+  &__header {
+    padding: 40px;
+    background-color: $N0;
+  }
   &__head {
     margin-bottom: 30px;
   }
@@ -12,7 +15,7 @@ $style: Strategy;
   &__inputs {
     margin-right: 36px;
     flex-grow: 1;
-    @include media {
+    @include media($screen-desktop-large) {
       flex-grow: 0;
       flex-basis: 50%;
     }
@@ -38,7 +41,23 @@ $style: Strategy;
     }
   }
   &__table {
+    position: relative;
+    z-index: 1;
     margin-bottom: 20px;
+    th, td {
+      &:nth-child(1) {
+        width: 20.1%;
+      }
+      &:nth-child(2) {
+        width: 14.95%;
+      }
+      &:nth-child(3) {
+        width: 14.95%;
+      }
+    }
+    &._active {
+      margin-bottom: 0;
+    }
   }
   &__name-cell {
     width: 25%;
@@ -59,5 +78,28 @@ $style: Strategy;
     &:not(:last-child) {
       margin-bottom: 10px;
     }
+  }
+  &__action-button {
+    &:not(:last-child) {
+      margin-right: 9px;
+    }
+  }
+  &__schedule {
+    padding: 25px 40px;
+  }
+  &__stat {
+    &:not(:last-child) {
+      margin-right: 40px;
+    }
+  }
+  &__dash {
+    height: 1px;
+    width: 4px;
+    background-color: $N8;
+    margin-bottom: 15px;
+    margin: 0 8px 15px;
+  }
+  &__test-btn {
+    margin-left: 20px;
   }
 }

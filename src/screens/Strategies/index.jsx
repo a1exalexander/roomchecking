@@ -7,9 +7,7 @@ import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
 import { ReactComponent as IconActions } from 'assets/svg/Actions.svg';
 import { ReactComponent as IconTrash } from 'assets/svg/Trash.svg';
 import { ReactComponent as IconCopy } from 'assets/svg/Copy.svg';
-import Popover from 'components/common/Popover';
-import PopoverButton from 'components/common/Popover/Button';
-import Popup from 'components/common/Popup';
+import { Popover, PopoverButton, Popup } from 'components';
 import { routePath } from 'router/const';
 
 export const StrategiesScreen = () => {
@@ -40,7 +38,7 @@ export const StrategiesScreen = () => {
         <LogoutBtn className='Strategies__logout-btn' />
       </Row>
       <Row justifyContent='space-between' className='Strategies__hotel-info'>
-        <Row className='Strategies__inputs' alignItems='flex-end' grow={1}>
+        <Row className='Strategies__inputs' alignItems='flex-end'>
           <Input
             label='Hotel Name'
             value={hotelInfo.hotelName}
@@ -127,7 +125,9 @@ export const StrategiesScreen = () => {
           ))}
         </tbody>
       </Table>
-      <Subtle Icon={IconPlus} link to={`${routePath.STRATEGY}/new`}>Add New Rule</Subtle>
+      <Subtle Icon={IconPlus} link to={`${routePath.STRATEGY}/new`}>
+        Add New Rule
+      </Subtle>
     </main>
   );
 };

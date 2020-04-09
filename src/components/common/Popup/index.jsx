@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { string, element, bool, oneOfType, func } from 'prop-types';
+import { string, bool, oneOfType, func, node } from 'prop-types';
 import cx from 'classnames';
 import { ReactComponent as IconClose } from 'assets/svg/Close.svg';
 import './Popup.scss';
@@ -99,7 +99,7 @@ Popup.propTypes = {
   title: string.isRequired,
   onClose: func.isRequired,
   className: string,
-  children: element,
+  children: node,
   width: string,
   visible: bool,
   secondaryButton: oneOfType([string, bool]),

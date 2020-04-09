@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import Row from 'components/common/Grid/Row';
-import { LogoutBtn, Input, Button, Table, Badge } from 'components/common';
+import cx from 'classnames';
+import {
+  Input,
+  Subtle,
+  Button,
+  Table,
+  Badge,
+  BackButton,
+  IconButton,
+  Popup,
+  Row,
+  Stat,
+} from 'components/common';
 import './Strategy.scss';
-import Subtle from 'components/common/Subtle';
 import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
-import { ReactComponent as IconActions } from 'assets/svg/Actions.svg';
 import { ReactComponent as IconTrash } from 'assets/svg/Trash.svg';
-import { ReactComponent as IconCopy } from 'assets/svg/Copy.svg';
-import Popover from 'components/common/Popover';
-import PopoverButton from 'components/common/Popover/Button';
-import Popup from 'components/common/Popup';
-import { routePath } from 'router/const';
+import { ReactComponent as IconEdit } from 'assets/svg/edit.svg';
+import { routePath } from 'router';
+import NewStrategy from './components/NewStrategy';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 export const StrategyScreen = () => {
   const [ruleInfo, setRuleInfo] = useState({
@@ -18,86 +26,134 @@ export const StrategyScreen = () => {
     comment: '',
   });
   const [visiblePopup, setVisiblePopup] = useState(false);
+  const [newStrategyVisible, setNewStrategyVisible] = useState(false);
 
   const onRuleInfoChange = (type) => (value) => {
     setRuleInfo((prevState) => ({ ...prevState, [type]: value }));
   };
 
   return (
-    <main className='Strategy'>
-      <Popup
-        width='420px'
-        visible={visiblePopup}
-        onClose={() => setVisiblePopup(false)}
-        title='Remove Cleaning Strategy'
-        dangerButton='Remove'
-        primaryButton={false}
-      >
-        Are you sure you want to remove this Cleaning Strategy?
-      </Popup>
-      <Row className='Strategy__head'>
-        <Subtle link to={routePath.STRATEGIES}>
-          Back to Rules List
-        </Subtle>
-      </Row>
-      <Row justifyContent='space-between' className='Strategy__hotel-info'>
-        <Row className='Strategy__inputs' alignItems='flex-end'>
-          <Input
-            label='Rule Name'
-            value={ruleInfo.ruleName}
-            onChange={onRuleInfoChange('ruleName')}
-            className='Strategy__input Strategy__input--small'
-          />
-          <Input
-            label='Comment'
-            value={ruleInfo.comment}
-            onChange={onRuleInfoChange('comment')}
-            className='Strategy__input Strategy__input--large'
-          />
+    <div className='Strategy'>
+      <header className='Strategy__header'>
+        <Popup
+          width='420px'
+          visible={visiblePopup}
+          onClose={() => setVisiblePopup(false)}
+          title='Remove Cleaning Strategy'
+          dangerButton='Remove'
+          primaryButton={false}
+        >
+          Are you sure you want to remove this Cleaning Strategy?
+        </Popup>
+        <Row className='Strategy__head'>
+          <BackButton link to={routePath.STRATEGIES}>
+            Back to Rules List
+          </BackButton>
         </Row>
-        <Row alignItems='flex-end'>
-          <Button type='secondary' className='Strategy__cancel-btn'>
-            Cancel
-          </Button>
-          <Button>Save</Button>
+        <Row justifyContent='space-between' className='Strategy__hotel-info'>
+          <Row className='Strategy__inputs' alignItems='flex-end'>
+            <Input
+              label='Rule Name'
+              value={ruleInfo.ruleName}
+              onChange={onRuleInfoChange('ruleName')}
+              className='Strategy__input Strategy__input--small'
+            />
+            <Input
+              label='Comment'
+              value={ruleInfo.comment}
+              onChange={onRuleInfoChange('comment')}
+              className='Strategy__input Strategy__input--large'
+            />
+          </Row>
+          <Row alignItems='flex-end'>
+            <Button type='secondary' className='Strategy__cancel-btn'>
+              Cancel
+            </Button>
+            <Button>Save</Button>
+          </Row>
         </Row>
-      </Row>
-      <Table className='Strategy__table'>
-        <thead>
-          <tr>
-            <th>cleaning strategies</th>
-            <th>source</th>
-            <th>period</th>
-            <th>comment</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[1, 2].map((i) => (
-            <tr key={i}>
-              <td>
-                <Row>
-                  <Badge fluid>REC</Badge>
-                </Row>
-              </td>
-              <td>PMS: Tag</td>
-              <td>Daily Cleaning</td>
-              <td>
-                <Row justifyContent='space-between'>
-                  <span>Lorem ipsum dolor sit amet.</span>
-                  <div>
-                    <button>1</button>
-                    <button>2</button>
-                  </div>
-                </Row>
-              </td>
+        <Table className={cx('Strategy__table', { _active: newStrategyVisible })}>
+          <thead>
+            <tr>
+              <th>cleaning strategies</th>
+              <th>source</th>
+              <th>period</th>
+              <th>comment</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-      <Subtle Icon={IconPlus} link to={`${routePath.STRATEGY}/new`}>
-        Add New Cleaning Strategy
-      </Subtle>
-    </main>
+          </thead>
+          <tbody>
+            {[1, 2].map((i) => (
+              <tr key={i}>
+                <td>
+                  <Badge fluid={true}>REC</Badge>
+                </td>
+                <td>PMS: Tag</td>
+                <td>Daily Cleaning</td>
+                <td>
+                  <Row justifyContent='space-between'>
+                    <span>Lorem ipsum dolor sit amet.</span>
+                    <Row>
+                      <IconButton className='Strategy__action-button'>
+                        <IconEdit />
+                      </IconButton>
+                      <IconButton className='Strategy__action-button'>
+                        <IconTrash />
+                      </IconButton>
+                    </Row>
+                  </Row>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+        <SwitchTransition mode='out-in'>
+          <CSSTransition
+            className='animated faster'
+            timeout={200}
+            classNames={{
+              enterActive: 'fadeInDown',
+              exitActive: 'fadeOutUp',
+            }}
+            key={newStrategyVisible}
+          >
+            {newStrategyVisible ? (
+              <NewStrategy
+                key='new-strategy'
+                onClose={() => setNewStrategyVisible(false)}
+              />
+            ) : (
+              <Subtle
+                key='button'
+                Icon={IconPlus}
+                onClick={() => setNewStrategyVisible(true)}
+              >
+                Add New Cleaning Strategy
+              </Subtle>
+            )}
+          </CSSTransition>
+        </SwitchTransition>
+      </header>
+      <main className='Strategy__schedule'>
+        <Row justifyContent='space-between' alignItems='flex-end'>
+          <Row alignItems='flex-end'>
+            <Input label='Resorvation:' />
+            <span className='Strategy__dash'></span>
+            <Input />
+            <Button type='secondary' className='Strategy__test-btn'>
+              Test Reservation
+            </Button>
+          </Row>
+          <Row>
+            <Stat className='Strategy__stat' value={4}>
+              REC
+            </Stat>
+            <Stat className='Strategy__stat' value={1}>
+              Hebdo
+            </Stat>
+          </Row>
+        </Row>
+      </main>
+    </div>
   );
 };
 

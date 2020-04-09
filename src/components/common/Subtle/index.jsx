@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  func,
-  string,
-  element,
-  oneOf,
-  bool,
-  oneOfType,
-  object,
-} from 'prop-types';
+import { func, string, oneOf, bool, oneOfType, object, node } from 'prop-types';
 import cx from 'classnames';
 import './Subtle.scss';
 import { Link } from 'react-router-dom';
@@ -25,7 +17,7 @@ export const Subtle = ({
 
   const renderContent = () => (
     <>
-      {Icon && <Icon className='Subtle__icon' />}
+      {Icon && <Icon className={cx('Subtle__icon')} />}
       <span className='Subtle__text'>{children}</span>
     </>
   );
@@ -57,9 +49,9 @@ Subtle.defaultProps = {
 
 Subtle.propTypes = {
   onClick: func,
-  children: string.isRequired,
-  Icon: element,
-  position: oneOf('left, right'),
+  children: node.isRequired,
+  Icon: object,
+  position: oneOf(['left', 'right']),
   className: string,
   link: bool,
   to: oneOfType([object, string]),

@@ -1,5 +1,5 @@
 import React from 'react';
-import { element, string, bool, number } from 'prop-types';
+import { string, bool, node } from 'prop-types';
 import cx from 'classnames';
 import './Row.scss';
 
@@ -38,7 +38,7 @@ Row.defaultProps = {
 };
 
 Row.propTypes = {
-  children: element,
+  children: node,
   className: string,
   justifyContent: string,
   alignItems: string,

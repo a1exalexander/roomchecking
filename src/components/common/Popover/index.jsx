@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, number, oneOfType, oneOf } from 'prop-types';
+import { string, number, oneOfType, oneOf, node } from 'prop-types';
 import cx from 'classnames';
 import './Popover.scss';
 
@@ -57,7 +57,7 @@ Popover.defaultProps = {
 
 Popover.propTypes = {
   className: string,
-  children: string.isRequired,
+  children: node.isRequired,
   width: string,
   top: oneOfType([string, number]),
   right: oneOfType([string, number]),
