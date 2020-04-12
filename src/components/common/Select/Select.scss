@@ -4,7 +4,9 @@ $style: Select;
 
 .#{$style} {
   position: relative;
+  @include z-index(dropdown);
   &__input-wrapper {
+    width: 100%;
     position: relative;
     @include flex(flex-start, center);
   }

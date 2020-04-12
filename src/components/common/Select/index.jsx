@@ -50,39 +50,41 @@ export const Select = ({
   };
 
   return (
-    <OutsideClickHandler disabled={!isOpen} onOutsideClick={hide}>
-      <div className={classNames('Select', className)}>
-        {label && (
-          <label className='Select__label' htmlFor={id}>
-            {label}
-          </label>
-        )}
-        <div onClick={toggle} className='Select__input-wrapper'>
-          <input
-            id={id}
-            type='text'
-            readOnly
-            className={classNames('Select__input', { _active: isOpen })}
-            value={getValue(value)}
-          />
-          <IconTriangle
-            className={classNames('Select__icon', { _active: isOpen })}
-          />
-        </div>
-        <CSSTransition
-          in={isOpen}
-          className='Select__list animated faster'
-          unmountOnExit
-          classNames={{
-            enterActive: 'pullDown',
-            exitActive: 'pullDown reverse',
-          }}
-          timeout={200}
-        >
-          <ul>{data.map(renderItem)}</ul>
-        </CSSTransition>
-      </div>
-    </OutsideClickHandler>
+    <div className={classNames('Select', className)}>
+      <OutsideClickHandler disabled={!isOpen} onOutsideClick={hide}>
+        <>
+          {label && (
+            <label className='Select__label' htmlFor={id}>
+              {label}
+            </label>
+          )}
+          <div onClick={toggle} className='Select__input-wrapper'>
+            <input
+              id={id}
+              type='text'
+              readOnly
+              className={classNames('Select__input', { _active: isOpen })}
+              value={getValue(value)}
+            />
+            <IconTriangle
+              className={classNames('Select__icon', { _active: isOpen })}
+            />
+          </div>
+          <CSSTransition
+            in={isOpen}
+            className='Select__list animated faster'
+            unmountOnExit
+            classNames={{
+              enterActive: 'pullDown',
+              exitActive: 'pullDown reverse',
+            }}
+            timeout={200}
+          >
+            <ul>{data.map(renderItem)}</ul>
+          </CSSTransition>
+        </>
+      </OutsideClickHandler>
+    </div>
   );
 };
 
