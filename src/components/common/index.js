@@ -12,3 +12,4 @@ export * from './Grid';
 export * from './LogoutBtn';
 export * from './BackButton';
 export * from './IconButton';
+export * from './Select';

@@ -1,0 +1,65 @@
+@import 'theme/style.scss';
+
+$style: Select;
+
+.#{$style} {
+  position: relative;
+  &__input-wrapper {
+    position: relative;
+    @include flex(flex-start, center);
+  }
+  &__input {
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    @extend %input;
+    &._active {
+      border-color: $B5;
+      box-shadow: 0 0 2px 2px rgba($B5, 0.12);
+    }
+  }
+  &__icon {
+    cursor: pointer;
+    pointer-events: none;
+    @include size(18px);
+    position: absolute;
+    z-index: 2;
+    right: 8px;
+    @include transition(all);
+    &._active {
+      transform: rotateX(180deg);
+    }
+  }
+  &__list {
+    right: 0;
+    left: 0;
+    position: absolute;
+    top: calc(100% + 4px);
+    list-style: none;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.11);
+    border-radius: 2px;
+    background-color: $N0;
+    padding: 6px 0;
+    max-height: 168px;
+    overflow-y: auto;
+  }
+  &__option {
+    @include text($H11, 400);
+    padding: 6px 16px;
+    cursor: pointer;
+    @include transition(all);
+    @include media {
+      &:hover {
+        background-color: lighten($B1, 5%);
+      }
+    }
+    &:active {
+      background-color: $B1;
+    }
+  }
+  &__label {
+    display: inline-block;
+    margin-bottom: 8px;
+    @include text($H11, 500, $N13);
+  }
+}

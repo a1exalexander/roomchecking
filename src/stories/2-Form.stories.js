@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 import {
   Checkbox as CheckboxElement,
-  Input as InputElement
+  Input as InputElement,
+  Select as SelectElement,
 } from 'components/common';
 import './style.scss';
 
 export default {
-  title: 'Form'
+  title: 'Form',
 };
 
 export const Checkbox = () => {
   const [value, setValue] = useState(false);
-  const onChange = value => {
+  const onChange = (value) => {
     setValue(value);
     return action(`Clicked (change value to "${value}")`)();
   };
@@ -36,6 +37,24 @@ export const Input = () => {
         <InputElement disabled label='Disabled' />
         <InputElement label='Error' status={'error'} />
         <InputElement label='Success' status={'success'} />
+      </article>
+    </section>
+  );
+};
+
+const data = [...new Array(10).keys()].map((item, idx) => ({
+  id: idx + 1,
+  value: `Option ${idx + 1}`,
+}));
+
+export const Select = () => {
+  const [value, setValue] = useState();
+
+  return (
+    <section className='section'>
+      <h2 className='title'>Select</h2>
+      <article className='row'>
+        <SelectElement label='Select' onChange={setValue} data={data} value={value} />
       </article>
     </section>
   );

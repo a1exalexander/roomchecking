@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import { v4 as uuidv4 } from 'uuid';
 import { string, oneOf, bool, func, any, objectOf } from 'prop-types';
@@ -17,7 +17,7 @@ export const Input = ({
   onChange,
   placeholder,
 }) => {
-  const id = useMemo(uuidv4);
+  const id = uuidv4();
   const handleChange = (e) => {
     const { value } = e.target;
     onChange(value);
