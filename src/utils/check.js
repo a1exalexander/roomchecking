@@ -4,3 +4,10 @@ export const isString = (el) => typeof el === 'string' || el instanceof String;
 export const isNumber = (el) => !Number.isNaN(Number(el));
 export const isArray = (el) => Array.isArray(el);
 export const isDate = (el) => el instanceof Date;
+
+const $hasOwnProperty = Object.prototype.hasOwnProperty;
+
+export const has = (obj, key) => {
+  if (obj !== Object(obj)) return false;
+  return $hasOwnProperty.call(obj, key);
+};

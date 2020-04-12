@@ -6,6 +6,10 @@ $style: NewStrategy;
   background-color: $N0;
   border: 1px solid $N4;
   border-top: none;
+  &._new {
+    padding: 0;
+    border: none;
+  }
   &__head {
     margin-bottom: 14px;
   }

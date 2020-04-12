@@ -44,7 +44,8 @@ $style: Strategy;
     position: relative;
     z-index: 1;
     margin-bottom: 20px;
-    th, td {
+    th,
+    td {
       &:nth-child(1) {
         width: 20.1%;
       }

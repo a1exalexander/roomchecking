@@ -19,6 +19,7 @@ import { ReactComponent as IconEdit } from 'assets/svg/edit.svg';
 import { routePath } from 'router';
 import NewStrategy from './components/NewStrategy';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import { has } from 'utils';
 
 export const StrategyScreen = () => {
   const [ruleInfo, setRuleInfo] = useState({
@@ -28,8 +29,21 @@ export const StrategyScreen = () => {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const [newStrategyVisible, setNewStrategyVisible] = useState(false);
 
+  const [newStrategy, setNewStrategy] = useState({
+    name: '',
+    source: null,
+    period: null,
+    comment: '',
+  });
+
+  const onChangeNewStrategy = (key) => (value) => {
+    setNewStrategy((prevState) => ({ ...prevState, [key]: value }));
+  };
+
   const onRuleInfoChange = (type) => (value) => {
-    setRuleInfo((prevState) => ({ ...prevState, [type]: value }));
+    if (has(newStrategy, type)) {
+      setRuleInfo((prevState) => ({ ...prevState, [type]: value }));
+    }
   };
 
   return (
@@ -72,7 +86,9 @@ export const StrategyScreen = () => {
             <Button>Save</Button>
           </Row>
         </Row>
-        <Table className={cx('Strategy__table', { _active: newStrategyVisible })}>
+        <Table
+          className={cx('Strategy__table', { _active: newStrategyVisible })}
+        >
           <thead>
             <tr>
               <th>cleaning strategies</th>
@@ -81,8 +97,9 @@ export const StrategyScreen = () => {
               <th>comment</th>
             </tr>
           </thead>
-          <tbody>
-            {[1, 2].map((i) => (
+
+          {[1, 2].map((i) => (
+            <tbody>
               <tr key={i}>
                 <td>
                   <Badge fluid={true}>REC</Badge>
@@ -103,22 +120,57 @@ export const StrategyScreen = () => {
                   </Row>
                 </td>
               </tr>
-            ))}
-          </tbody>
+              <CSSTransition
+                in={false}
+                unmountOnExit
+                className='animated faster'
+                timeout={200}
+                classNames={{
+                  enterActive: 'pullDown',
+                  exitActive: 'fadeOutUp',
+                }}
+              >
+                <tr>
+                  <td colSpan='4'>
+                    <NewStrategy
+                      name={newStrategy.name}
+                      source={newStrategy.source}
+                      period={newStrategy.period}
+                      comment={newStrategy.comment}
+                      onChangeName={onChangeNewStrategy('name')}
+                      onChangeSource={onChangeNewStrategy('source')}
+                      onChangePeriod={onChangeNewStrategy('period')}
+                      onChangeComment={onChangeNewStrategy('comment')}
+                      onClose={() => setNewStrategyVisible(false)}
+                    />
+                  </td>
+                </tr>
+              </CSSTransition>
+            </tbody>
+          ))}
         </Table>
         <SwitchTransition mode='out-in'>
           <CSSTransition
             className='animated faster'
             timeout={200}
             classNames={{
-              enterActive: 'fadeInDown',
+              enterActive: 'pullDown',
               exitActive: 'fadeOutUp',
             }}
             key={newStrategyVisible}
           >
             {newStrategyVisible ? (
               <NewStrategy
+                isNew
                 key='new-strategy'
+                name={newStrategy.name}
+                source={newStrategy.source}
+                period={newStrategy.period}
+                comment={newStrategy.comment}
+                onChangeName={onChangeNewStrategy('name')}
+                onChangeSource={onChangeNewStrategy('source')}
+                onChangePeriod={onChangeNewStrategy('period')}
+                onChangeComment={onChangeNewStrategy('comment')}
                 onClose={() => setNewStrategyVisible(false)}
               />
             ) : (
