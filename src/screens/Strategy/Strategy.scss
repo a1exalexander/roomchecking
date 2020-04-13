@@ -43,7 +43,6 @@ $style: Strategy;
   &__table {
     position: relative;
     z-index: 1;
-    margin-bottom: 20px;
     th,
     td {
       &:nth-child(1) {
@@ -55,9 +54,6 @@ $style: Strategy;
       &:nth-child(3) {
         width: 14.95%;
       }
-    }
-    &._active {
-      margin-bottom: 0;
     }
   }
   &__name-cell {
@@ -102,5 +98,8 @@ $style: Strategy;
   }
   &__test-btn {
     margin-left: 20px;
+  }
+  &__add-btn {
+    margin-top: 20px;
   }
 }

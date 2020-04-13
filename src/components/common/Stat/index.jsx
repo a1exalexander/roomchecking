@@ -31,7 +31,7 @@ Stat.defaultProps = {
 };
 
 Stat.propTypes = {
-  label: string.isRequired,
+  label: string,
   value: oneOfType([number, string]).isRequired,
   style: objectOf(any),
   children: node,

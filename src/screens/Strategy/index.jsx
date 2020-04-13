@@ -10,16 +10,24 @@ import {
   IconButton,
   Popup,
   Row,
-  Stat,
 } from 'components/common';
 import './Strategy.scss';
 import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
 import { ReactComponent as IconTrash } from 'assets/svg/Trash.svg';
 import { ReactComponent as IconEdit } from 'assets/svg/edit.svg';
 import { routePath } from 'router';
-import NewStrategy from './components/NewStrategy';
+import { EditStrategy } from './components/EditStrategy';
+import { Scheduler } from './components/Scheduler';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
-import { has } from 'utils';
+import { has, isBoolean, isString } from 'utils';
+import { v4 as uuid } from 'uuid';
+
+const initStrategy = {
+  name: '',
+  source: '',
+  period: '',
+  comment: '',
+};
 
 export const StrategyScreen = () => {
   const [ruleInfo, setRuleInfo] = useState({
@@ -27,24 +35,61 @@ export const StrategyScreen = () => {
     comment: '',
   });
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const [newStrategyVisible, setNewStrategyVisible] = useState(false);
-
-  const [newStrategy, setNewStrategy] = useState({
-    name: '',
-    source: null,
-    period: null,
-    comment: '',
-  });
-
-  const onChangeNewStrategy = (key) => (value) => {
-    setNewStrategy((prevState) => ({ ...prevState, [key]: value }));
-  };
+  const [editStrategyVisible, setEditStrategyVisible] = useState(false);
+  const [strategies, setStrategies] = useState([]);
+  const [strategy, setStrategy] = useState({ ...initStrategy });
 
   const onRuleInfoChange = (type) => (value) => {
-    if (has(newStrategy, type)) {
+    if (has(strategy, type)) {
       setRuleInfo((prevState) => ({ ...prevState, [type]: value }));
     }
   };
+
+  const onChangeStrategy = (key) => (value) => {
+    setStrategy((prevState) => ({ ...prevState, [key]: value }));
+  };
+
+  const cleanStratery = () => {
+    setStrategy({ ...initStrategy });
+  };
+
+  const closeEditStrategy = () => setEditStrategyVisible(false);
+
+  const onAddNewStrategy = () => {
+    setStrategy({ ...initStrategy });
+    setEditStrategyVisible(true);
+  };
+
+  const addNewStrategy = () => {
+    setStrategies((prevState) => [...prevState, { ...strategy, id: uuid() }]);
+    closeEditStrategy();
+    cleanStratery();
+  };
+
+  const removeStrategy = (id) => {
+    const shallowCopy = [...strategies];
+    const idx = shallowCopy.findIndex((item) => item.id === id);
+    shallowCopy.splice(idx, 1);
+    setStrategies([...shallowCopy]);
+  };
+
+  const editStrategy = (id) => {
+    const item = strategies.find((item) => item.id === id);
+    setStrategy((prevState) => ({ ...prevState, ...item }));
+    setEditStrategyVisible(id);
+  };
+
+  const saveStrategy = (id) => {
+    const shallowCopy = [...strategies];
+    const idx = shallowCopy.findIndex((item) => item.id === id);
+    shallowCopy.splice(idx, 1, { ...strategy, id });
+    setStrategies([...shallowCopy]);
+    closeEditStrategy();
+    cleanStratery();
+  };
+
+  const isNewStrategyVisible =
+    isBoolean(editStrategyVisible) && editStrategyVisible;
 
   return (
     <div className='Strategy'>
@@ -86,9 +131,7 @@ export const StrategyScreen = () => {
             <Button>Save</Button>
           </Row>
         </Row>
-        <Table
-          className={cx('Strategy__table', { _active: newStrategyVisible })}
-        >
+        <Table className={cx('Strategy__table')}>
           <thead>
             <tr>
               <th>cleaning strategies</th>
@@ -98,22 +141,28 @@ export const StrategyScreen = () => {
             </tr>
           </thead>
 
-          {[1, 2].map((i) => (
-            <tbody>
-              <tr key={i}>
+          {strategies.map((item) => (
+            <tbody key={item.id}>
+              <tr>
                 <td>
-                  <Badge fluid={true}>REC</Badge>
+                  <Badge fluid={true}>{item.name}</Badge>
                 </td>
-                <td>PMS: Tag</td>
-                <td>Daily Cleaning</td>
+                <td>{item.source}</td>
+                <td>{item.period}</td>
                 <td>
                   <Row justifyContent='space-between'>
-                    <span>Lorem ipsum dolor sit amet.</span>
+                    <span>{item.comment}</span>
                     <Row>
-                      <IconButton className='Strategy__action-button'>
+                      <IconButton
+                        onClick={() => editStrategy(item.id)}
+                        className='Strategy__action-button'
+                      >
                         <IconEdit />
                       </IconButton>
-                      <IconButton className='Strategy__action-button'>
+                      <IconButton
+                        onClick={() => removeStrategy(item.id)}
+                        className='Strategy__action-button'
+                      >
                         <IconTrash />
                       </IconButton>
                     </Row>
@@ -121,7 +170,10 @@ export const StrategyScreen = () => {
                 </td>
               </tr>
               <CSSTransition
-                in={false}
+                in={
+                  isString(editStrategyVisible) &&
+                  editStrategyVisible === item.id
+                }
                 unmountOnExit
                 className='animated faster'
                 timeout={200}
@@ -132,16 +184,21 @@ export const StrategyScreen = () => {
               >
                 <tr>
                   <td colSpan='4'>
-                    <NewStrategy
-                      name={newStrategy.name}
-                      source={newStrategy.source}
-                      period={newStrategy.period}
-                      comment={newStrategy.comment}
-                      onChangeName={onChangeNewStrategy('name')}
-                      onChangeSource={onChangeNewStrategy('source')}
-                      onChangePeriod={onChangeNewStrategy('period')}
-                      onChangeComment={onChangeNewStrategy('comment')}
-                      onClose={() => setNewStrategyVisible(false)}
+                    <EditStrategy
+                      name={strategy.name}
+                      source={strategy.source}
+                      period={strategy.period}
+                      comment={strategy.comment}
+                      onChangeName={onChangeStrategy('name')}
+                      onChangeSource={({ value }) =>
+                        onChangeStrategy('source')(value)
+                      }
+                      onChangePeriod={({ value }) =>
+                        onChangeStrategy('period')(value)
+                      }
+                      onChangeComment={onChangeStrategy('comment')}
+                      onSubmit={() => saveStrategy(item.id)}
+                      onClose={closeEditStrategy}
                     />
                   </td>
                 </tr>
@@ -151,60 +208,44 @@ export const StrategyScreen = () => {
         </Table>
         <SwitchTransition mode='out-in'>
           <CSSTransition
-            className='animated faster'
+            className={cx('animated faster', {
+              'Strategy__add-btn': !isNewStrategyVisible,
+            })}
             timeout={200}
             classNames={{
               enterActive: 'pullDown',
               exitActive: 'fadeOutUp',
             }}
-            key={newStrategyVisible}
+            key={isNewStrategyVisible ? 'new-strategy' : 'button'}
           >
-            {newStrategyVisible ? (
-              <NewStrategy
+            {isNewStrategyVisible ? (
+              <EditStrategy
                 isNew
                 key='new-strategy'
-                name={newStrategy.name}
-                source={newStrategy.source}
-                period={newStrategy.period}
-                comment={newStrategy.comment}
-                onChangeName={onChangeNewStrategy('name')}
-                onChangeSource={onChangeNewStrategy('source')}
-                onChangePeriod={onChangeNewStrategy('period')}
-                onChangeComment={onChangeNewStrategy('comment')}
-                onClose={() => setNewStrategyVisible(false)}
+                name={strategy.name}
+                source={strategy.source}
+                period={strategy.period}
+                comment={strategy.comment}
+                onChangeName={onChangeStrategy('name')}
+                onChangeSource={({ value }) =>
+                  onChangeStrategy('source')(value)
+                }
+                onChangePeriod={({ value }) =>
+                  onChangeStrategy('period')(value)
+                }
+                onChangeComment={onChangeStrategy('comment')}
+                onSubmit={addNewStrategy}
+                onClose={closeEditStrategy}
               />
             ) : (
-              <Subtle
-                key='button'
-                Icon={IconPlus}
-                onClick={() => setNewStrategyVisible(true)}
-              >
+              <Subtle key='button' Icon={IconPlus} onClick={onAddNewStrategy}>
                 Add New Cleaning Strategy
               </Subtle>
             )}
           </CSSTransition>
         </SwitchTransition>
       </header>
-      <main className='Strategy__schedule'>
-        <Row justifyContent='space-between' alignItems='flex-end'>
-          <Row alignItems='flex-end'>
-            <Input label='Resorvation:' />
-            <span className='Strategy__dash'></span>
-            <Input />
-            <Button type='secondary' className='Strategy__test-btn'>
-              Test Reservation
-            </Button>
-          </Row>
-          <Row>
-            <Stat className='Strategy__stat' value={4}>
-              REC
-            </Stat>
-            <Stat className='Strategy__stat' value={1}>
-              Hebdo
-            </Stat>
-          </Row>
-        </Row>
-      </main>
+      <Scheduler />
     </div>
   );
 };

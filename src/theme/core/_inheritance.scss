@@ -10,6 +10,11 @@
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
   outline: none;
   @include transition(all);
+  @include media {
+    &:hover {
+      border-color: $B2;
+    }
+  }
   &::placeholder {
     @include text($H12, 400, $N10);
   }

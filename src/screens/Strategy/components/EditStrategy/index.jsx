@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { string, func, bool, oneOfType, number, object } from 'prop-types';
-import './NewStrategy.scss';
+import './EditStrategy.scss';
 import { Button, Row, IconButton, Input, Select } from 'components';
 import { ReactComponent as IconClose } from 'assets/svg/Close.svg';
 
@@ -10,7 +10,7 @@ const data = [...new Array(10).keys()].map((item, idx) => ({
   value: `Option ${idx + 1}`,
 }));
 
-export const NewStrategy = ({
+export const EditStrategy = ({
   className,
   onClose,
   isNew,
@@ -25,9 +25,13 @@ export const NewStrategy = ({
   onSubmit,
 }) => {
   return (
-    <div className={cx('NewStrategy', { _new: !isNew }, className)}>
-      <Row justifyContent='space-between' className='NewStrategy__head'>
-        <h3 className='NewStrategy__heading' alignItems='flex-start'>
+    <div className={cx('EditStrategy', { _new: !isNew }, className)}>
+      <Row
+        justifyContent='space-between'
+        className='EditStrategy__head'
+        alignItems='flex-start'
+      >
+        <h3 className='EditStrategy__heading'>
           {isNew ? 'Add Cleaning Strategy' : 'Edit Cleaning Strategy'}
         </h3>
         <IconButton onClick={onClose}>
@@ -37,20 +41,20 @@ export const NewStrategy = ({
 
       <Row alignItems='flex-end'>
         <Input
-          className='NewStrategy__input'
+          className='EditStrategy__input'
           label='Name'
           value={name}
           onChange={onChangeName}
         />
         <Select
-          className='NewStrategy__input'
+          className='EditStrategy__input'
           data={data}
           label='Source'
           value={source}
           onChange={onChangeSource}
         />
         <Select
-          className='NewStrategy__input'
+          className='EditStrategy__input'
           data={data}
           label='Period'
           value={period}
@@ -59,13 +63,13 @@ export const NewStrategy = ({
         <Input
           value={comment}
           onChange={onChangeComment}
-          className='NewStrategy__input NewStrategy__input--large'
+          className='EditStrategy__input EditStrategy__input--large'
           label='Comment'
         />
         <Button
-          className='NewStrategy__add-btn'
+          className='EditStrategy__add-btn'
           type='secondary'
-          onSubmit={onSubmit}
+          onClick={onSubmit}
         >
           {isNew ? 'Add' : 'Save'}
         </Button>
@@ -74,13 +78,13 @@ export const NewStrategy = ({
   );
 };
 
-NewStrategy.defaultProps = {
+EditStrategy.defaultProps = {
   className: null,
   onClose: () => void 1,
   isNew: false,
 };
 
-NewStrategy.propTypes = {
+EditStrategy.propTypes = {
   onClose: func,
   className: string,
   isNew: bool,
@@ -95,4 +99,4 @@ NewStrategy.propTypes = {
   onSubmit: func.isRequired,
 };
 
-export default NewStrategy;
+export default EditStrategy;
