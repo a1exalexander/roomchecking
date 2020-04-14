@@ -32,3 +32,9 @@
     border-color: $N4;
   }
 }
+
+%label {
+  display: inline-block;
+  margin-bottom: 8px;
+  @include text($H11, 600, $N13);
+}

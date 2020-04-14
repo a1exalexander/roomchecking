@@ -5,7 +5,7 @@ import 'theme/custom/scheduler.css';
 import 'theme/custom/scheduler-light-theme.css';
 import './Scheduler.scss';
 import { data } from './data';
-import { Row, Button, Stat } from 'components';
+import { Row, Button, Stat, Col, Badge } from 'components';
 import { DatePicker } from 'antd';
 
 const { RangePicker } = DatePicker;
@@ -27,8 +27,18 @@ export const Scheduler = () => {
     setDateInterval(dates);
   };
   const renderDateCell = (cellData) => (
-    <div className='Scheduler__weekname'>{dayOfWeekNames[cellData.date.getDay()]}</div>
+    <div className='Scheduler__weekname'>
+      {dayOfWeekNames[cellData.date.getDay()]}
+    </div>
   );
+
+  const renderAppointment = (model) => {
+    return (
+      <Badge ellipsis fluid>
+        {model.appointmentData.text}
+      </Badge>
+    );
+  };
   return (
     <div className='Scheduler'>
       <Row
@@ -37,7 +47,14 @@ export const Scheduler = () => {
         className='Scheduler__header'
       >
         <Row alignItems='flex-end'>
-          <RangePicker value={dateInterval} onChange={onChangeInterval} />
+          <Col>
+            <span className='Strategy__input-label'>Resorvation:</span>
+            <RangePicker
+              value={dateInterval}
+              separator='-'
+              onChange={onChangeInterval}
+            />
+          </Col>
           <Button type='secondary' className='Scheduler__test-btn'>
             Test Reservation
           </Button>
@@ -52,15 +69,16 @@ export const Scheduler = () => {
         </Row>
       </Row>
       <DevextremeScheduler
+        appointmentRender={renderAppointment}
         className={cx('Scheduler__scheduler')}
         dataSource={data}
         currentDate={dateInterval[0] || new Date()}
         showAllDayPanel={false}
+        shadeUntilCurrentTime={true}
         showCurrentTimeIndicator={true}
         defaultCurrentView='month'
         defaultCurrentDate={currentDate}
         height={600}
-        startDayHour={9}
       >
         <View type='month' dateCellRender={renderDateCell} />
       </DevextremeScheduler>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { element, string, bool, number } from 'prop-types';
+import { string, bool, number, node } from 'prop-types';
 import cx from 'classnames';
 import './Col.scss';
 
@@ -48,7 +48,7 @@ Col.defaultProps = {
 };
 
 Col.propTypes = {
-  children: element,
+  children: node,
   className: string,
   justifyContent: string,
   alignItems: string,

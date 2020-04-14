@@ -81,7 +81,7 @@ $style: Strategy;
       margin-right: 9px;
     }
   }
-  &__schedule {
+  &__scheduler {
     padding: 25px 40px;
   }
   &__stat {
@@ -101,5 +101,8 @@ $style: Strategy;
   }
   &__add-btn {
     margin-top: 20px;
+  }
+  &__input-label {
+    @extend %label;
   }
 }

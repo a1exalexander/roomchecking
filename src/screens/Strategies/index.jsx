@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Row from 'components/common/Grid/Row';
-import { LogoutBtn, Input, Button, Table, Badge } from 'components/common';
+import {
+  LogoutBtn,
+  Input,
+  Button,
+  Table,
+  Badge,
+  Container,
+} from 'components/common';
 import './Strategies.scss';
 import Subtle from 'components/common/Subtle';
 import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
@@ -24,7 +31,7 @@ export const StrategiesScreen = () => {
   };
 
   return (
-    <main className='Strategies'>
+    <Container className='Strategies'>
       <Popup
         visible={visiblePopup}
         onClose={() => setVisiblePopup(false)}
@@ -128,7 +135,7 @@ export const StrategiesScreen = () => {
       <Subtle Icon={IconPlus} link to={`${routePath.STRATEGY}/new`}>
         Add New Rule
       </Subtle>
-    </main>
+    </Container>
   );
 };
 

@@ -6,8 +6,6 @@ $style: Input;
     @extend %input;
   }
   &__label {
-    display: inline-block;
-    margin-bottom: 8px;
-    @include text($H11, 500, $N13);
+    @extend %label;
   }
 }

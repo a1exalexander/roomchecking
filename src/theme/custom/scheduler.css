@@ -1,3 +1,6 @@
+:root {
+  --border-color: #DFE1E7;
+}
 .dx-clearfix:after,
 .dx-clearfix:before {
   display: table;
@@ -3105,7 +3108,7 @@
 }
 .dx-loadpanel-content {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--border-color);
   background: #fefefe;
   text-align: center;
   -webkit-user-select: none;
@@ -7273,7 +7276,7 @@ input.dx-hidden {
   position: absolute;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  border: 1px dashed #778899;
+  border: 1px dashed var(--border-color);
 }
 .dx-resize-frame .dx-resizable-handle-corner-bottom-left,
 .dx-resize-frame .dx-resizable-handle-corner-bottom-right,

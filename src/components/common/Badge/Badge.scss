@@ -7,7 +7,7 @@ $style: Badge;
 }
 
 .#{$style} {
-  @include flex(center, center);
+  @include flex(flex-start, center);
   display: inline-flex;
   padding: 6px 10px;
   line-height: 1;
@@ -17,6 +17,7 @@ $style: Badge;
   @include text($H12, 500, $N10);
   @include transition(all);
   cursor: pointer;
+  text-align: left;
   @include media {
     &:hover {
       filter: brightness(1.01);
@@ -26,6 +27,13 @@ $style: Badge;
   &:active {
     box-shadow: none;
     filter: brightness(0.99);
+  }
+  &._small {
+    padding: 3px 6px;
+    font-size: $H11;
+  }
+  &._large {
+    padding: 10px 14px;
   }
   &._fluid {
     justify-self: flex-start;
@@ -104,6 +112,14 @@ $style: Badge;
     }
     &:active {
       box-shadow: none;
+    }
+  }
+  &__text {
+    &._ellipsis {
+      text-overflow: ellipsis;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
     }
   }
 }

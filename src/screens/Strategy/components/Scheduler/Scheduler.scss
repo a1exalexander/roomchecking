@@ -2,7 +2,9 @@
 
 $style: Scheduler;
 .#{$style} {
-  padding: 25px 40px;
+  &__scheduler {
+    border-radius: 2px;
+  }
   &__stat {
     &:not(:last-child) {
       margin-right: 40px;

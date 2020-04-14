@@ -8601,10 +8601,10 @@ textarea.ant-picker-input > input {
 }
 .ant-picker-range .ant-picker-active-bar {
   bottom: -1px;
-  height: 2px;
+  height: 1px;
   border-radius: 2px;
   margin-left: 11px;
-  background: #0065ff;
+  background: #fff;
   opacity: 0;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;

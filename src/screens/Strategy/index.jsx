@@ -10,6 +10,7 @@ import {
   IconButton,
   Popup,
   Row,
+  Container,
 } from 'components/common';
 import './Strategy.scss';
 import { ReactComponent as IconPlus } from 'assets/svg/Plus.svg';
@@ -93,7 +94,7 @@ export const StrategyScreen = () => {
 
   return (
     <div className='Strategy'>
-      <header className='Strategy__header'>
+      <Container className='Strategy__header'>
         <Popup
           width='420px'
           visible={visiblePopup}
@@ -244,8 +245,10 @@ export const StrategyScreen = () => {
             )}
           </CSSTransition>
         </SwitchTransition>
-      </header>
-      <Scheduler />
+      </Container>
+      <Container className='Strategy__scheduler'>
+        <Scheduler />
+      </Container>
     </div>
   );
 };
