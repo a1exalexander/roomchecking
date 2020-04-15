@@ -1457,7 +1457,7 @@
   text-decoration: none;
 }
 .dx-button .dx-button-content {
-  padding: 5px;
+  /* padding: 5px; */
 }
 .dx-button .dx-icon {
   width: 14px;
@@ -11214,15 +11214,23 @@
   background-color: #337ab7;
   color: #fff;
 }
+.dx-item.dx-scheduler-appointment.dx-scheduler-appointment-horizontal.dx-resizable {
+  max-height: 48px !important;
+}
 .dx-scheduler-appointment-collector.dx-button,
 .dx-scheduler-appointment-collector.dx-button.dx-state-active,
 .dx-scheduler-appointment-collector.dx-button.dx-state-focused,
 .dx-scheduler-appointment-collector.dx-button.dx-state-hover {
-  background-color: #337ab7;
+  background-color: white;
   color: #fff;
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+  max-width: fit-content !important;
+  display: flex;
+  text-align: left;
+  position: relative;
+  bottom: -2px;
 }
 .dx-scheduler-appointment-collector.dx-button .dx-button-content,
 .dx-scheduler-appointment-collector.dx-button.dx-state-active .dx-button-content,

@@ -26,4 +26,40 @@ $style: Scheduler;
   &__weekname {
     @include text($H12, 400, $N7);
   }
+  &__collector {
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+  }
+  &__period {
+    min-height: 32px;
+    margin-right: 45px;
+  }
+  &__current-date {
+    @include text($H14, 600);
+    margin-right: 12px;
+    min-width: 110px;
+  }
+  &__arrow-btn {
+    @include flex(center, center);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    &:not(:last-of-type) {
+      margin-right: 8px;
+    }
+    @include media {
+      &:hover .#{$style}__arrow-icon {
+        fill: $N6;
+      }
+    }
+    &:active .#{$style}__arrow-icon {
+      fill: $N8;
+    }
+  }
+  &__arrow-icon {
+    @include svg(20px, $N7);
+    &--right {
+      transform: rotate(90deg);
+    }
+  }
 }

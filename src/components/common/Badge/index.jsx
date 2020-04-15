@@ -20,13 +20,14 @@ export const Badge = ({
   style,
   color,
   fluid,
+  fill,
 }) => {
   return (
     <span
       className={cx(
         'Badge',
         `_${color}`,
-        { _fluid: fluid },
+        { _fluid: fluid, _fill: fill },
         `_${size}`,
         className
       )}
@@ -46,6 +47,7 @@ Badge.defaultProps = {
   fluid: false,
   ellipsis: false,
   size: 'normal',
+  fill: false,
 };
 
 Badge.propTypes = {
@@ -56,6 +58,7 @@ Badge.propTypes = {
   fluid: bool,
   ellipsis: bool,
   size: oneOf(['small', 'normal', 'large']),
+  fill: bool,
 };
 
 export default Badge;

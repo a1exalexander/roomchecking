@@ -62,6 +62,10 @@ $style: Badge;
         box-shadow: shadow($G4);
       }
     }
+    &._fill {
+      background-color: $G5;
+      color: $N0;
+    }
     &:active {
       box-shadow: none;
     }
